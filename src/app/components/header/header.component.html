@@ -6,7 +6,10 @@
       *ngIf="web3.userAccount"
       (click)="claim()"
     >
-      {{ web3.compBalance }}
+      {{
+        computed.add(web3.compBalance, web3.unclaimedCompBalance)
+          | number: "0.4-4"
+      }}
       <span class="comp-icon icon"></span>
     </div>
     <div class="user-info-account flex-between" *ngIf="web3.userAccount">

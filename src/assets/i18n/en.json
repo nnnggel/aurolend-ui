@@ -28,5 +28,15 @@
     "service": "Terms of Service",
     "unlock": "Unlock Wallet",
     "click": "You may need to click the extension."
+  },
+  "claimBalance": {
+    "balance": "COMP Balance",
+    "wallet": "Wallet Balance",
+    "unclaimed": "Unclaimed Balance",
+    "price": "Price",
+    "claim": "Claim {{value}} COMP",
+    "noUnclaimed": "NOTHING TO CLAIM",
+    "confirm": "Confirm Transaction",
+    "confirmTip": "Confirm the transaction."
   }
 }

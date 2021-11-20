@@ -71,6 +71,24 @@ export class Web3Service implements OnDestroy {
   set compBalance(val: string) {
     this.compBalance$.next(val);
   }
+  // 未领取的comp代币余额 外部组件可以监听到此值变化
+  public readonly unclaimedCompBalance$: BehaviorSubject<string> =
+    new BehaviorSubject<string>('0.0000');
+  get unclaimedCompBalance(): string {
+    return this.unclaimedCompBalance$.getValue();
+  }
+  set unclaimedCompBalance(val: string) {
+    this.unclaimedCompBalance$.next(val);
+  }
+  // comp代币对应的美元价格 外部组件可以监听到此值变化
+  public readonly compToUsd$: BehaviorSubject<string> =
+    new BehaviorSubject<string>('0.0000');
+  get compToUsd(): string {
+    return this.compToUsd$.getValue();
+  }
+  set compToUsd(val: string) {
+    this.compToUsd$.next(val);
+  }
   // 存款余额 外部组件可以监听到此值变化
   public readonly supplyBalance$: BehaviorSubject<string> =
     new BehaviorSubject<string>('0');
@@ -286,8 +304,12 @@ export class Web3Service implements OnDestroy {
 
   // 获取当前用户借贷信息
   getLendBalance(): void {
-    // 右上角comp代币余额
-    this.compBalance = '0.6125';
+    // comp代币余额
+    this.compBalance = '0.606812';
+    // 未领取的comp代币余额
+    this.unclaimedCompBalance = '0.006512';
+    // comp对应的美元价格
+    this.compToUsd = '350.00';
     // 存款余额
     this.supplyBalance = '0.32269861';
     // 借款余额
@@ -368,4 +390,6 @@ export class Web3Service implements OnDestroy {
       return '';
     }
   }
+  // 提取未领取的comp
+  public claimSubmit(): void {}
 }

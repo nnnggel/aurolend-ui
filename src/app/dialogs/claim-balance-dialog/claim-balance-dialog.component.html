@@ -1,1 +1,95 @@
-<p>claim-balance-dialog works!</p>
+<div class="claim-balance-dialog">
+  <h2 mat-dialog-title>
+    {{ "claimBalance.balance" | translate }}
+    <i class="close-icon" mat-dialog-close></i>
+  </h2>
+
+  <mat-dialog-content>
+    <div *ngIf="!loading">
+      <!--logo、总览-->
+      <div class="claim-balance flex-center">
+        <i class="logo-icon"></i>
+        <!--余额加上未取余额-->
+        <p class="claim-balance-totals">
+          {{ computed.add(web3.compBalance, web3.unclaimedCompBalance) }}
+        </p>
+        <!--对应的usd价格-->
+        <p class="claim-balance-usd">
+          ${{
+            computed.mul(
+              computed.add(web3.compBalance, web3.unclaimedCompBalance),
+              web3.compToUsd
+            ) | number: "0.2-2"
+          }}
+        </p>
+      </div>
+      <!--明细-->
+      <div class="claim-detail">
+        <!--余额-->
+        <div class="claim-detail-row flex-between">
+          <span class="claim-detail-row-name">{{
+            "claimBalance.wallet" | translate
+          }}</span>
+          <span class="claim-detail-row-num">{{
+            web3.compBalance | number: "0.4-4"
+          }}</span>
+        </div>
+        <!--未提现余额-->
+        <div class="claim-detail-row flex-between">
+          <span class="claim-detail-row-name">{{
+            "claimBalance.unclaimed" | translate
+          }}</span>
+          <span class="claim-detail-row-num">{{
+            web3.unclaimedCompBalance | number: "0.4-4"
+          }}</span>
+        </div>
+        <!--1comp对应的美金价格-->
+        <div class="claim-detail-row flex-between">
+          <span class="claim-detail-row-name">{{
+            "claimBalance.price" | translate
+          }}</span>
+          <span class="claim-detail-row-num"
+            >${{ web3.compToUsd | number: "0.2-2" }}</span
+          >
+        </div>
+      </div>
+      <!--btn-->
+      <button mat-flat-button *ngIf="+web3.unclaimedCompBalance === 0" disabled>
+        {{ "claimBalance.noUnclaimed" | translate }}
+      </button>
+      <button
+        mat-flat-button
+        *ngIf="+web3.unclaimedCompBalance !== 0"
+        color="primary"
+        (click)="submit()"
+      >
+        {{
+          "claimBalance.claim" | translate: { value: web3.unclaimedCompBalance }
+        }}
+      </button>
+    </div>
+
+    <!--loading-->
+    <div class="loading-box flex-center" *ngIf="loading">
+      <div class="loading">
+        <div></div>
+      </div>
+      <!--取的总数-->
+      <p class="claim-balance-totals">
+        {{
+          "claimBalance.claim" | translate: { value: web3.unclaimedCompBalance }
+        }}
+      </p>
+      <!--对应的usd价格-->
+      <p class="claim-balance-usd">
+        ${{
+          computed.mul(web3.unclaimedCompBalance, web3.compToUsd)
+            | number: "0.2-2"
+        }}
+      </p>
+      <p class="claim-balance-tip">
+        {{ "claimBalance.confirmTip" | translate }}
+      </p>
+    </div>
+  </mat-dialog-content>
+</div>

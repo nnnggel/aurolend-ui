@@ -93,3 +93,33 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.loading {
+  display: flex;
+  margin: 66px auto 96px;
+  position: relative;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-color: #00d395;
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 88.63%;
+    height: 88.63%;
+    margin: 5px;
+    border: 2px solid;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+}

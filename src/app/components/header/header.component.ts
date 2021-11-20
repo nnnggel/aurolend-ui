@@ -3,6 +3,8 @@ import { Web3Service } from '../../services/web3/web3.service';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConnectWalletDialogComponent } from '../../dialogs/connect-wallet-dialog/connect-wallet-dialog.component';
+import { ComputedService } from '../../services/computed/computed.service';
+import { ClaimBalanceDialogComponent } from '../../dialogs/claim-balance-dialog/claim-balance-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +15,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     public translate: TranslateService,
     public web3: Web3Service,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public computed: ComputedService
   ) {}
 
   ngOnInit(): void {}
@@ -26,6 +29,6 @@ export class HeaderComponent implements OnInit {
   }
   // 打开提取代币弹窗
   claim(): void {
-    this.dialog.open(ConnectWalletDialogComponent);
+    this.dialog.open(ClaimBalanceDialogComponent);
   }
 }
