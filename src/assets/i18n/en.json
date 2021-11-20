@@ -1,0 +1,15 @@
+{
+  "networkTip": {
+    "1": "Mainnet",
+    "3": "Ropsten Testnet",
+    "4": "Rinkeby Testnet",
+    "5": "Goerli Testnet",
+    "42": "Kovan Testnet",
+    "note": "Note: You are currently connected to the {{value}}",
+    "noETH": "Your account does not have any Ether, which is required to interact with Aurolend",
+    "err": "Aurolend is not supported on this network. Please switch to Mainnet.",
+    "congest": "The Ethereum blockchain is currently congested; transactions are more ",
+    "expensive": "expensive ",
+    "wait": "than usual. Consider waiting to use Aurolend."
+  }
+}

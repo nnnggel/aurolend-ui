@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+@use "~@angular/material" as mat;
+$custom-typography: mat.define-typography-config(
+  $font-family: "Haas Grot Text R ,sans-serif",
+);
+@include mat.core($custom-typography);
+@import "common";
+$aurolend-ui-primary: (
+  50: #e0f2f1,
+  100: #b2dfdb,
+  200: #80cbc4,
+  300: #4db6ac,
+  400: #26a69a,
+  500: $theme,
+  600: #00897b,
+  700: #00796b,
+  800: #00695c,
+  900: #004d40,
+  A100: #a7ffeb,
+  A200: #64ffda,
+  A400: #1de9b6,
+  A700: #00bfa5,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
+  ),
+);
+$aurolend-ui-accent: mat.define-palette(mat.$purple-palette, a200, a100, a400);
+$aurolend-ui-warn: mat.define-palette(mat.$red-palette);
+$aurolend-ui-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette($aurolend-ui-primary),
+      accent: $aurolend-ui-accent,
+      warn: $aurolend-ui-warn,
+    ),
+  )
+);
+@include mat.all-component-themes($aurolend-ui-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Haas Grot Text R", sans-serif;
+}

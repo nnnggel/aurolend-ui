@@ -3,16 +3,32 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { from, Observable } from 'rxjs';
+import { NetworkTipComponent } from './components/network-tip/network-tip.component';
+
+// 更改翻译文件后触发热更新
+class AutoLoadTranslateLoader implements TranslateLoader {
+  getTranslation(lang: string): Observable<any> {
+    return from(import(`../assets/i18n/${lang}.json`));
+  }
+}
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: AutoLoadTranslateLoader,
+      },
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

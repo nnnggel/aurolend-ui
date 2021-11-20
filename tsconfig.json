@@ -12,14 +12,22 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "stream": ["./node_modules/stream-browserify"],
+      "crypto": ["./node_modules/crypto-browserify"],
+      "assert": ["./node_modules/assert/"],
+      "http": ["./node_modules/stream-http"],
+      "https": ["./node_modules/https-browserify"],
+      "os": ["./node_modules/os-browserify/browser"],
+      "types": ["node"],
+      "typeRoots": ["./node_modules/@types"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
