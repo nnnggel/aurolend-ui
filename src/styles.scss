@@ -70,16 +70,17 @@ body {
   background-size: contain;
   border-radius: 50%;
 }
+
 .close-icon {
-  width: 15px;
-  height: 15px;
   display: inline-block;
   flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  background-image: url("~src/assets/images/close.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   cursor: pointer;
-  background-image: url("~src/assets/images/close.svg");
 }
 
 .flex-center {
@@ -93,14 +94,16 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
 .loading {
-  display: flex;
-  margin: 66px auto 96px;
   position: relative;
+  display: flex;
   width: 88px;
   height: 88px;
-  border-radius: 50%;
+  margin: 66px auto 96px;
   background-color: #00d395;
+  border-radius: 50%;
+
   @keyframes lds-ring {
     0% {
       transform: rotate(0deg);
@@ -110,16 +113,17 @@ body {
       transform: rotate(360deg);
     }
   }
+
   div {
-    box-sizing: border-box;
-    display: block;
     position: absolute;
+    display: block;
+    box-sizing: border-box;
     width: 88.63%;
     height: 88.63%;
     margin: 5px;
     border: 2px solid;
+    border-color: #fff transparent transparent;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
   }
 }

@@ -1,43 +1,48 @@
 @import "~src/common";
+
 ::ng-deep {
   .mat-dialog-container {
     padding: 0;
   }
 }
+
 .claim-balance-dialog {
+  position: relative;
   width: 420px;
 
-  position: relative;
   .mat-dialog-title {
-    height: 60px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    color: #141e27;
-    line-height: 60px;
     position: relative;
+    height: 60px;
     margin-bottom: 0;
+    color: #141e27;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 60px;
+    text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
     .close-icon {
       position: absolute;
-      right: 20px;
       top: 22px;
+      right: 20px;
     }
   }
+
   .mat-dialog-content {
-    padding: 43px 60px 30px;
     margin: 0;
+    padding: 43px 60px 30px;
+
     .claim-balance {
       flex-direction: column;
       width: 300px;
+
       .logo-icon {
         width: 67.5px;
         height: 67.5px;
         background-image: url("~src/assets/images/comp.svg");
-        background-size: 100%;
-        background-position: center;
         background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
         border-radius: 50%;
       }
 
@@ -51,73 +56,86 @@
       }
 
       &-usd {
+        margin-top: 9px;
+        color: #aab8c1;
+        font-weight: 400;
         font-size: 13px;
         line-height: 1;
-        font-weight: 400;
-        margin-top: 9px;
         text-align: center;
-        color: #aab8c1;
       }
     }
+
     .claim-detail {
       margin: 20px 0 15px;
+
       &-row {
         padding: 15px 0;
         border-bottom: 1px solid #eceff1;
+
         &:nth-last-of-type(1) {
           border-bottom: unset;
         }
+
         &-name {
-          font-size: 15px;
           color: #aab8c1;
-        }
-        &-num {
           font-size: 15px;
+        }
+
+        &-num {
           color: #141e27;
+          font-size: 15px;
         }
       }
     }
+
     button {
-      color: #fff;
       width: 100%;
       height: 52px;
+      color: #fff;
       font-weight: 700;
       font-size: 14px;
+
       &.mat-button-disabled {
         background: #ccd6dd;
       }
     }
+
     .loading-box {
-      text-align: center;
       flex-direction: column;
+      text-align: center;
+
       .loading {
-        margin: 30px 0 0;
         width: 67px;
         height: 67px;
+        margin: 30px 0 0;
       }
+
       .claim-balance {
         &-totals {
+          margin-top: 15px;
+          color: #070a0e;
+          font-weight: 600;
           font-size: 20px;
           line-height: 26px;
-          margin-top: 15px;
-          font-weight: 600;
-          color: #070a0e;
         }
+
         &-usd {
+          margin-top: 10px;
+          color: #aab8c1;
           font-size: 14px;
           line-height: 1;
-          margin-top: 10px;
-          color: #aab8c1;
         }
+
         &-tip {
-          color: #aab8c1;
-          font-size: 12px;
           margin-top: 10px;
           margin-bottom: 70px;
+          color: #aab8c1;
+          font-size: 12px;
         }
       }
     }
   }
+
   ::ng-deep .cdk-program-focused .mat-button-focus-overlay {
     opacity: 0;
   }

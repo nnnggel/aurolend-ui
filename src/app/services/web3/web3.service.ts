@@ -7,7 +7,12 @@ import { fromEvent } from 'rxjs';
 import Web3 from 'web3';
 import { Contract } from 'web3-eth-contract';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { IRandom, ISignData, ITransSign } from '../../common/interfaces';
+import {
+  IRandom,
+  ISignData,
+  IToken,
+  ITransSign,
+} from '../../common/interfaces';
 
 declare let window: any;
 
@@ -134,6 +139,17 @@ export class Web3Service implements OnDestroy {
   }
   set borrowLimitPercent(val: number) {
     this.borrowLimitPercent$.next(val);
+  }
+
+  // 代币列表 外部组件可以监听到此值变化
+  public readonly marketsData$: BehaviorSubject<IToken[]> = new BehaviorSubject<
+    IToken[]
+  >([]);
+  get marketsData(): IToken[] {
+    return this.marketsData$.getValue();
+  }
+  set marketsData(val: IToken[]) {
+    this.marketsData$.next(val);
   }
 
   public web3: any;
@@ -319,7 +335,28 @@ export class Web3Service implements OnDestroy {
     // 借入限额
     this.borrowLimit = '0.19';
     // 借入限额百分数
-    this.borrowLimitPercent = 13;
+    this.borrowLimitPercent = 13.12;
+    // 代币列表
+    this.marketsData = [
+      {
+        token: 'BAT',
+        name: 'Basic Attention Token',
+        supplyAPY: '29.13%',
+        borrowAPY: '35.98%',
+        wallet: '0.02',
+        liquidity: '0k',
+        isEnabled: true,
+      },
+      {
+        token: 'COMP',
+        name: 'Comp',
+        supplyAPY: '10.62%',
+        borrowAPY: '21.85%',
+        wallet: '0.6068',
+        liquidity: '1.68M',
+        isEnabled: false,
+      },
+    ];
   }
   // 通用随机数签名
   public async prepareRandomSignTypedData(

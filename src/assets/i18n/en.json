@@ -38,5 +38,13 @@
     "noUnclaimed": "NOTHING TO CLAIM",
     "confirm": "Confirm Transaction",
     "confirmTip": "Confirm the transaction."
+  },
+  "markets": {
+    "markets": "Markets",
+    "asset": "Asset",
+    "supplyAPY": "Supply APY",
+    "borrowAPY": "Borrow APY",
+    "wallet": "Wallet",
+    "liquidity": "Liquidity"
   }
 }

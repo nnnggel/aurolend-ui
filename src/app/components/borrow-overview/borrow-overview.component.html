@@ -42,7 +42,7 @@
         class="borrow-limit-percent-num"
         [style]="{ left: web3.borrowLimitPercent + '%' }"
       >
-        {{ web3.borrowLimitPercent }}%
+        {{ web3.borrowLimitPercent | number: "0.0-0" }}%
       </div>
       <mat-progress-bar
         mode="determinate"

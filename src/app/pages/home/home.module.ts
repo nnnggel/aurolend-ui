@@ -11,6 +11,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ConnectWalletDialogComponent } from '../../dialogs/connect-wallet-dialog/connect-wallet-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ClaimBalanceDialogComponent } from '../../dialogs/claim-balance-dialog/claim-balance-dialog.component';
+import { MarketsComponent } from '../../components/markets/markets.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -22,6 +24,7 @@ import { ClaimBalanceDialogComponent } from '../../dialogs/claim-balance-dialog/
     MatButtonModule,
     MatProgressBarModule,
     MatDialogModule,
+    MatTableModule,
   ],
   declarations: [
     HomeComponent,
@@ -30,6 +33,7 @@ import { ClaimBalanceDialogComponent } from '../../dialogs/claim-balance-dialog/
     BorrowOverviewComponent,
     ConnectWalletDialogComponent,
     ClaimBalanceDialogComponent,
+    MarketsComponent,
   ],
 })
 export class HomeModule {}

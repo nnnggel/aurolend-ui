@@ -15,3 +15,12 @@ export interface IRandom {
   random: string;
   explain: string;
 }
+export interface IToken {
+  token: string;
+  name: string;
+  supplyAPY: string;
+  borrowAPY: string;
+  wallet: string;
+  liquidity: string;
+  isEnabled: boolean;
+}

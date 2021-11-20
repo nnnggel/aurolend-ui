@@ -38,6 +38,7 @@ header {
         margin-left: 4px;
         background-image: url("~src/assets/images/comp.svg");
       }
+
       .metamask-icon {
         width: 12px;
         height: 12px;
@@ -48,12 +49,15 @@ header {
 
     &-account {
       @extend .user-info-balance;
-      cursor: auto;
+
       margin-left: 20px;
+      cursor: auto;
+
       &:hover {
         background-color: $network-mainnet-tip-bg;
       }
     }
+
     &-connect {
       @extend .user-info-balance;
     }
