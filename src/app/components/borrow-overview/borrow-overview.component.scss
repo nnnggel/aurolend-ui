@@ -1,0 +1,105 @@
+@import "~src/common";
+$gray: #657786;
+.borrow-overview {
+  width: 900px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  margin: auto;
+  overflow: hidden;
+  color: #fff;
+  .supply-balance {
+    width: 300px;
+    text-align: center;
+    font-weight: 500;
+    &-name {
+      font-size: 12px;
+      color: $theme;
+    }
+    &-num {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  }
+  .net-apy {
+    &-total {
+      box-sizing: border-box;
+      border: 3.5px solid $theme;
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      background-color: $network-tip-bg;
+      text-align: center;
+      flex-direction: column;
+      font-weight: 500;
+      font-size: 24px;
+      &-text {
+        color: $gray;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+    }
+    &-hover {
+      @extend .net-apy-total;
+      background-color: $network-mainnet-tip-bg;
+      font-weight: 500;
+      font-size: 12px;
+    }
+  }
+  .borrow-balance {
+    @extend .supply-balance;
+    &-name {
+      @extend .supply-balance-name;
+      color: #9669ed;
+    }
+    &-num {
+      @extend .supply-balance-num;
+    }
+  }
+  .borrow-limit {
+    color: #657786;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 107px;
+    &-name {
+      padding-right: 10px;
+      width: 85px;
+      display: inline-block;
+    }
+    &-percent {
+      width: 725px;
+      position: relative;
+
+      &-num {
+        position: absolute;
+        color: #fff;
+        background: $network-tip-bg;
+        padding: 4px;
+        top: -12px;
+        z-index: 1;
+      }
+      ::ng-deep .mat-progress-bar {
+        width: 760px;
+        height: 3px;
+        &-buffer {
+          background: #1f242a;
+        }
+        &.orange {
+          .mat-progress-bar-fill::after {
+            background: #ffd24a;
+          }
+        }
+        &.red {
+          .mat-progress-bar-fill::after {
+            background: #f35454;
+          }
+        }
+      }
+    }
+    &-num {
+      width: 85px;
+      text-align: right;
+      display: inline-block;
+    }
+  }
+}

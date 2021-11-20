@@ -1,0 +1,61 @@
+@import "~src/common";
+
+header {
+  box-sizing: border-box;
+  width: 1160px;
+  margin: auto;
+  padding: 15px 0;
+
+  .logo {
+    padding-left: 10px;
+    color: #cfd8dc;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .user-info {
+    padding: 0 10px;
+
+    &-balance {
+      box-sizing: border-box;
+      height: 32px;
+      padding: 10px 6.5px;
+      color: #cfd8dc;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 1px;
+      background-color: $network-mainnet-tip-bg;
+      border-radius: 3px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #1d2b38;
+      }
+
+      .comp-icon {
+        width: 18.75px;
+        height: 18.75px;
+        margin-left: 4px;
+        background-image: url("~src/assets/images/comp.svg");
+      }
+      .metamask-icon {
+        width: 12px;
+        height: 12px;
+        margin-right: 10px;
+        background-image: url("~src/assets/images/metamask.svg");
+      }
+    }
+
+    &-account {
+      @extend .user-info-balance;
+      cursor: auto;
+      margin-left: 20px;
+      &:hover {
+        background-color: $network-mainnet-tip-bg;
+      }
+    }
+    &-connect {
+      @extend .user-info-balance;
+    }
+  }
+}

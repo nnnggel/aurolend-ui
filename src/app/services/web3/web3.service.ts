@@ -55,12 +55,67 @@ export class Web3Service implements OnDestroy {
   }
   // 账号eth余额 外部组件可以监听到此值变化
   private readonly ethBalance$: BehaviorSubject<string> =
-    new BehaviorSubject<string>('0');
+    new BehaviorSubject<string>('');
   get ethBalance(): string {
     return this.ethBalance$.getValue();
   }
   set ethBalance(val: string) {
     this.ethBalance$.next(val);
+  }
+  // 账号comp代币余额 外部组件可以监听到此值变化
+  public readonly compBalance$: BehaviorSubject<string> =
+    new BehaviorSubject<string>('0.0000');
+  get compBalance(): string {
+    return this.compBalance$.getValue();
+  }
+  set compBalance(val: string) {
+    this.compBalance$.next(val);
+  }
+  // 存款余额 外部组件可以监听到此值变化
+  public readonly supplyBalance$: BehaviorSubject<string> =
+    new BehaviorSubject<string>('0');
+  get supplyBalance(): string {
+    return this.supplyBalance$.getValue();
+  }
+  set supplyBalance(val: string) {
+    this.supplyBalance$.next(val);
+  }
+  // 借贷余额 外部组件可以监听到此值变化
+  public readonly borrowBalance$: BehaviorSubject<string> =
+    new BehaviorSubject<string>('0');
+  get borrowBalance(): string {
+    return this.borrowBalance$.getValue();
+  }
+  set borrowBalance(val: string) {
+    this.borrowBalance$.next(val);
+  }
+  // 净APY 外部组件可以监听到此值变化
+  public readonly netAPY$: BehaviorSubject<string | null> = new BehaviorSubject<
+    string | null
+  >(null);
+  get netAPY(): string | null {
+    return this.netAPY$.getValue();
+  }
+  set netAPY(val: string | null) {
+    this.netAPY$.next(val);
+  }
+  // 借入限额 外部组件可以监听到此值变化
+  public readonly borrowLimit$: BehaviorSubject<string> =
+    new BehaviorSubject<string>('0.00');
+  get borrowLimit(): string {
+    return this.borrowLimit$.getValue();
+  }
+  set borrowLimit(val: string) {
+    this.borrowLimit$.next(val);
+  }
+  // 借入限额百分数 外部组件可以监听到此值变化
+  public readonly borrowLimitPercent$: BehaviorSubject<number> =
+    new BehaviorSubject<number>(0);
+  get borrowLimitPercent(): number {
+    return this.borrowLimitPercent$.getValue();
+  }
+  set borrowLimitPercent(val: number) {
+    this.borrowLimitPercent$.next(val);
   }
 
   public web3: any;
@@ -174,6 +229,8 @@ export class Web3Service implements OnDestroy {
     // 获取eth余额
     this.web3Ready = true;
     await this.getEthBalance();
+    // 获取借贷信息
+    this.getLendBalance();
   }
   // 初始化合约
   private initLendContract(): void {
@@ -227,6 +284,21 @@ export class Web3Service implements OnDestroy {
     return this.ethBalance;
   }
 
+  // 获取当前用户借贷信息
+  getLendBalance(): void {
+    // 右上角comp代币余额
+    this.compBalance = '0.6125';
+    // 存款余额
+    this.supplyBalance = '0.32269861';
+    // 借款余额
+    this.borrowBalance = '0.02538042';
+    // 净APY
+    this.netAPY = '-73.63%';
+    // 借入限额
+    this.borrowLimit = '0.19';
+    // 借入限额百分数
+    this.borrowLimitPercent = 13;
+  }
   // 通用随机数签名
   public async prepareRandomSignTypedData(
     random: IRandom

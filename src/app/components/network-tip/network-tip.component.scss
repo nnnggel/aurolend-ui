@@ -1,22 +1,27 @@
 @import "~src/common";
+
 .network-tip {
-  background-color: $network-tip-bg;
-  color: #fff;
-  border-bottom: 1px solid #000;
-  text-align: center;
-  line-height: 1.5;
-  font-size: 14px;
   padding: 20px 0;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  background-color: $network-tip-bg;
+  border-bottom: 1px solid #000;
+
   p {
     margin: 0;
+
     a {
       color: $theme;
       text-decoration: unset;
     }
   }
+
   &.warn-tip {
     background-color: $warn;
   }
+
   &.mainnet-tip {
     background-color: $network-mainnet-tip-bg;
   }

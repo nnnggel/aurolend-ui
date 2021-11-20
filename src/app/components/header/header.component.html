@@ -1,0 +1,24 @@
+<header class="flex-between">
+  <div class="logo">Logo</div>
+  <div class="user-info flex-center">
+    <div
+      class="user-info-balance flex-between"
+      *ngIf="web3.userAccount"
+      (click)="claim()"
+    >
+      {{ web3.compBalance }}
+      <span class="comp-icon icon"></span>
+    </div>
+    <div class="user-info-account flex-between" *ngIf="web3.userAccount">
+      {{ web3.userAccount.slice(0, 5) + "..." + web3.userAccount.slice(-4) }}
+    </div>
+    <div
+      class="user-info-connect flex-between"
+      *ngIf="!web3.userAccount"
+      (click)="connect()"
+    >
+      <span class="metamask-icon icon"></span>
+      {{ "header.noConnect" | translate }}
+    </div>
+  </div>
+</header>

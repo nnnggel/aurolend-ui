@@ -1,0 +1,121 @@
+@import "~src/common";
+
+::ng-deep {
+  .mat-dialog-container {
+    padding: 0;
+  }
+}
+.connect-wallet-dialog {
+  width: 410px;
+  padding: 38px 10px 20px;
+  position: relative;
+  .close-icon {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+  .mat-dialog-content {
+    .connect-wallet {
+      flex-direction: column;
+      .logo-icon {
+        width: 78px;
+        height: 78px;
+        background-image: url("~src/assets/images/compound-connect.svg");
+        background-size: 50%;
+        background-position: center;
+        box-shadow: 0 3px 6px rgb(0 0 0 / 7%);
+        background-repeat: no-repeat;
+        border-radius: 100px;
+      }
+      &-title {
+        margin: 16px 0 4px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 25px;
+        color: #141e2a;
+        text-align: center;
+      }
+      &-start {
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0;
+        text-align: center;
+        color: #657786;
+      }
+    }
+    .wallets {
+      margin: 18px 0;
+      .metamask {
+        padding: 22px 38px;
+        height: 100px;
+        transition: box-shadow 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        width: 380px;
+        box-sizing: border-box;
+        margin: auto;
+        &-icon {
+          flex-shrink: 0;
+          display: inline-block;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          width: 35px;
+          height: 35px;
+          background-image: url("~src/assets/images/metamask.svg");
+        }
+        &-title {
+          font-size: 16px;
+          color: #141e27;
+          margin-left: 20px;
+        }
+        &:hover {
+          box-shadow: 0 0 24px rgb(0 0 0 / 8%);
+        }
+      }
+    }
+    .loading {
+      display: flex;
+      margin: 66px auto 96px;
+      position: relative;
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background-color: #00d395;
+      @keyframes lds-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 88.63%;
+        height: 88.63%;
+        margin: 5px;
+        border: 2px solid;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #fff transparent transparent transparent;
+      }
+    }
+    .accept {
+      text-align: center;
+      font-size: 12px;
+      color: #aab8c1;
+      &-link {
+        color: $theme;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

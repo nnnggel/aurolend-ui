@@ -23,7 +23,7 @@
         | translate: { value: ("networkTip." + web3.network | translate) }
     }}
     <!--eth余额为0-->
-    <p *ngIf="web3.ethBalance === '0'">
+    <p *ngIf="web3.ethBalance && web3.ethBalance === '0'">
       {{ "networkTip.noETH" | translate }}
     </p>
   </div>

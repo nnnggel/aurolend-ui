@@ -2,7 +2,9 @@
 $custom-typography: mat.define-typography-config(
   $font-family: "Haas Grot Text R ,sans-serif",
 );
+
 @include mat.core($custom-typography);
+
 @import "common";
 $aurolend-ui-primary: (
   50: #e0f2f1,
@@ -47,6 +49,7 @@ $aurolend-ui-theme: mat.define-light-theme(
     ),
   )
 );
+
 @include mat.all-component-themes($aurolend-ui-theme);
 
 html,
@@ -57,4 +60,36 @@ body {
 body {
   margin: 0;
   font-family: "Haas Grot Text R", sans-serif;
+}
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: 50%;
+}
+.close-icon {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+  background-image: url("~src/assets/images/close.svg");
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

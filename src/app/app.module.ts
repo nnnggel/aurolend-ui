@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { from, Observable } from 'rxjs';
-import { NetworkTipComponent } from './components/network-tip/network-tip.component';
 
 // 更改翻译文件后触发热更新
 class AutoLoadTranslateLoader implements TranslateLoader {

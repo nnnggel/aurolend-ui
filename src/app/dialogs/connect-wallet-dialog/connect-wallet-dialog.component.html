@@ -1,0 +1,41 @@
+<div class="connect-wallet-dialog">
+  <i class="close-icon" mat-dialog-close></i>
+  <mat-dialog-content>
+    <!--logo部分-->
+    <div class="connect-wallet flex-center">
+      <i class="logo-icon"></i>
+      <div *ngIf="!connecting">
+        <p class="connect-wallet-title">
+          {{ "connectWallet.connect" | translate }}
+        </p>
+        <p class="connect-wallet-start">
+          {{ "connectWallet.start" | translate }}
+        </p>
+      </div>
+      <div *ngIf="connecting">
+        <p class="connect-wallet-title">
+          {{ "connectWallet.unlock" | translate }}
+        </p>
+        <p class="connect-wallet-start">
+          {{ "connectWallet.click" | translate }}
+        </p>
+      </div>
+    </div>
+    <!--链接钱包-->
+    <div class="wallets" *ngIf="!connecting">
+      <div class="metamask" (click)="connectMetamask()">
+        <i class="metamask-icon"></i>
+        <span class="metamask-title">Metamask</span>
+      </div>
+    </div>
+    <!--loading-->
+    <div class="loading" *ngIf="connecting">
+      <div></div>
+    </div>
+    <!--用户协议-->
+    <div class="accept">
+      {{ "connectWallet.accept" | translate }}
+      <span class="accept-link">{{ "connectWallet.service" | translate }}</span>
+    </div>
+  </mat-dialog-content>
+</div>

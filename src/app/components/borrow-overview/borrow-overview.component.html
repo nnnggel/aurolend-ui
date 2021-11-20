@@ -1,0 +1,60 @@
+<div class="borrow-overview">
+  <div class="flex-between">
+    <!--存款余额-->
+    <div class="supply-balance">
+      <div class="supply-balance-name">
+        {{ "borrowOverview.supply" | translate }}
+      </div>
+      <div class="supply-balance-num">${{ web3.supplyBalance }}</div>
+    </div>
+    <!--净APY-->
+    <div
+      class="net-apy flex-center"
+      (mouseover)="netApyDetailVisible = true"
+      (mouseleave)="netApyDetailVisible = false"
+    >
+      <div class="net-apy-total flex-center" *ngIf="!netApyDetailVisible">
+        <span class="net-apy-total-text">{{
+          "borrowOverview.netApy" | translate
+        }}</span>
+        <span>{{ web3.netAPY ?? "..." }}</span>
+      </div>
+      <div class="net-apy-hover flex-center" *ngIf="netApyDetailVisible">
+        <span>{{ web3.netAPY ?? "..." }}</span>
+        <span>Interest earned and paid, plus COMP</span>
+      </div>
+    </div>
+    <!--借贷余额-->
+    <div class="borrow-balance">
+      <div class="borrow-balance-name">
+        {{ "borrowOverview.borrow" | translate }}
+      </div>
+      <div class="borrow-balance-num">${{ web3.borrowBalance }}</div>
+    </div>
+  </div>
+  <!--借入限额-->
+  <div class="borrow-limit flex-center">
+    <span class="borrow-limit-name">{{
+      "borrowOverview.limit" | translate
+    }}</span>
+    <div class="borrow-limit-percent">
+      <div
+        class="borrow-limit-percent-num"
+        [style]="{ left: web3.borrowLimitPercent + '%' }"
+      >
+        {{ web3.borrowLimitPercent }}%
+      </div>
+      <mat-progress-bar
+        mode="determinate"
+        [value]="web3.borrowLimitPercent"
+        [class.orange]="
+          web3.borrowLimitPercent >= 60 && web3.borrowLimitPercent < 80
+        "
+        [class.red]="web3.borrowLimitPercent >= 80"
+      >
+        ></mat-progress-bar
+      >
+    </div>
+    <span class="borrow-limit-num">${{ web3.borrowLimit }}</span>
+  </div>
+</div>

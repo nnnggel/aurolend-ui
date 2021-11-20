@@ -11,5 +11,22 @@
     "congest": "The Ethereum blockchain is currently congested; transactions are more ",
     "expensive": "expensive ",
     "wait": "than usual. Consider waiting to use Aurolend."
+  },
+  "borrowOverview": {
+    "supply": "Supply Balance",
+    "borrow": "Borrow Balance",
+    "netApy": "Net APY",
+    "limit": "Borrow Limit"
+  },
+  "header": {
+    "noConnect": "No Account"
+  },
+  "connectWallet": {
+    "connect": "Connect Wallet",
+    "start": "To start using Aurolend",
+    "accept": "By connecting, I accept Compound's ",
+    "service": "Terms of Service",
+    "unlock": "Unlock Wallet",
+    "click": "You may need to click the extension."
   }
 }
