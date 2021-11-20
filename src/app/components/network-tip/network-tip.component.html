@@ -1,0 +1,35 @@
+<!--不为主网且eth余额为0，或者不在web3.networks列表中，则背景显示红色-->
+<!--为主网且网络拥堵，则背景显示灰色-->
+<div
+  class="network-tip"
+  [class.warn-tip]="
+    (web3.network !== 1 && web3.ethBalance === '0') ||
+    !web3.networks.includes(web3.network)
+  "
+  [class.mainnet-tip]="web3.network === 1"
+>
+  <!--网络拥挤-->
+  <p *ngIf="web3.network === 1 && web3.isCongest">
+    {{ "networkTip.congest" | translate }}
+    <a href="https://www.blocknative.com/gas-estimator" target="_blank">
+      {{ "networkTip.expensive" | translate }}
+    </a>
+    {{ "networkTip.wait" | translate }}
+  </p>
+  <!--当前所在测试网-->
+  <div *ngIf="web3.networks.includes(web3.network) && web3.network !== 1">
+    {{
+      "networkTip.note"
+        | translate: { value: ("networkTip." + web3.network | translate) }
+    }}
+    <!--eth余额为0-->
+    <p *ngIf="web3.ethBalance === '0'">
+      {{ "networkTip.noETH" | translate }}
+    </p>
+  </div>
+
+  <!--网络错误-->
+  <p *ngIf="!web3.networks.includes(web3.network)">
+    {{ "networkTip.err" | translate }}
+  </p>
+</div>

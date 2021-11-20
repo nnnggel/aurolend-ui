@@ -1,0 +1,7 @@
+<!--有网络时，不是主网才显示tip；或者为主网时，拥堵也显示tip-->
+<app-network-tip
+  *ngIf="
+    (web3.network && web3.network !== 1) ||
+    (web3.network === 1 && web3.isCongest)
+  "
+></app-network-tip>
