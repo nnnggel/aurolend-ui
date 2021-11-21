@@ -1,0 +1,35 @@
+.input-amount {
+  position: relative;
+  height: 140px;
+
+  input {
+    width: 300px;
+    color: #141e27;
+    font-weight: 500;
+    font-size: 40px;
+    text-align: center;
+    border: unset;
+    outline: unset;
+
+    &::placeholder {
+      color: #aab8c5;
+    }
+  }
+
+  &-max {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70px;
+    height: 140px;
+    color: #aab8c5;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 140px;
+    cursor: pointer;
+
+    &:hover {
+      color: #141e27;
+    }
+  }
+}

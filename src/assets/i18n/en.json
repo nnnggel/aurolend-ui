@@ -42,9 +42,37 @@
   "markets": {
     "markets": "Markets",
     "asset": "Asset",
+    "totalSupply": "Total supply",
     "supplyAPY": "Supply APY",
+    "totalBorrow": "Total borrow",
     "borrowAPY": "Borrow APY",
     "wallet": "Wallet",
     "liquidity": "Liquidity"
+  },
+  "marketRowDialog": {
+    "tabs": {
+      "0": "SUPPLY",
+      "1": "WITHDRAW",
+      "2": "BORROW",
+      "3": "REPAY"
+    },
+    "toEnable": "To Supply or Repay {{value}} to the Compound Protocol, you need to enable it first.",
+    "supplyRate": "Supply Rates",
+    "supplyAPY": "Supply APY",
+    "borrowRate": "Borrow Rates",
+    "borrowAPY": "Borrow APY",
+    "distribution": "Distribution APY",
+    "enable": "ENABLE",
+    "walletBalance": "Wallet Balance",
+    "borrowLimit": "Borrow Limit",
+    "borrowLimitUsed": "Borrow Limit Used",
+    "currentlySupplying": "Currently Supplying",
+    "currentlyBorrowing": "Currently Borrowing",
+    "noBalanceWithdraw": "No Balance to Withdraw",
+    "borrowingLimit": "Borrowing limit reached",
+    "max": "MAX",
+    "confirm": "Confirm Transaction",
+    "notEnough": "NO FUNDS AVAILABLE",
+    "insufficient": "INSUFFICIENT LIQUIDITY"
   }
 }

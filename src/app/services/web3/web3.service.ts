@@ -199,6 +199,7 @@ export class Web3Service implements OnDestroy {
 
   // 初始化web3
   public async bootstrapWeb3(): Promise<void> {
+    this.getLendBalance();
     // 检查metamask状态
     if (!window.ethereum) {
       // 未安装Metamask
@@ -326,10 +327,6 @@ export class Web3Service implements OnDestroy {
     this.unclaimedCompBalance = '0.006512';
     // comp对应的美元价格
     this.compToUsd = '350.00';
-    // 存款余额
-    this.supplyBalance = '0.32269861';
-    // 借款余额
-    this.borrowBalance = '0.02538042';
     // 净APY
     this.netAPY = '-73.63%';
     // 借入限额
@@ -342,21 +339,53 @@ export class Web3Service implements OnDestroy {
         token: 'BAT',
         name: 'Basic Attention Token',
         supplyAPY: '29.13%',
+        supplyBalance: '0.3839',
+        supplyDistributionAPY: '-,100%', // 存款页面分销APY
         borrowAPY: '35.98%',
+        borrowBalance: '0.0302',
+        borrowDistributionAPY: '0%', // 借款页面分销APY
         wallet: '0.02',
         liquidity: '0k',
-        isEnabled: true,
+        isSupplyEnabled: true,
+        isRepayEnabled: false,
+        rateToUsd: '0.8335', // 1代币兑多少美元
+        totalSupply: '1970442',
+        totalBorrow: '852638',
+        supplyEnable: false,
+        repayEnable: false,
       },
       {
         token: 'COMP',
         name: 'Comp',
         supplyAPY: '10.62%',
+        supplyBalance: '0.6068',
+        supplyDistributionAPY: '12,530.01%',
         borrowAPY: '21.85%',
+        borrowBalance: '0',
+        borrowDistributionAPY: '0%',
         wallet: '0.6068',
         liquidity: '1.68M',
-        isEnabled: false,
+        isSupplyEnabled: false,
+        isRepayEnabled: false,
+        rateToUsd: '350',
+        totalSupply: '163972229',
+        totalBorrow: '132682841',
+        supplyEnable: false,
+        repayEnable: false,
       },
     ];
+    this.marketsData.forEach((item: IToken) => {
+      // 存款余额
+      this.supplyBalance = this.computed.add(
+        this.supplyBalance,
+        this.computed.mul(item.supplyBalance, item.rateToUsd)
+      );
+      // 借款余额
+      this.borrowBalance = this.computed.add(
+        this.borrowBalance,
+        this.computed.mul(item.borrowBalance, item.rateToUsd)
+      );
+    });
   }
   // 通用随机数签名
   public async prepareRandomSignTypedData(
@@ -429,4 +458,10 @@ export class Web3Service implements OnDestroy {
   }
   // 提取未领取的comp
   public claimSubmit(): void {}
+  // 启用supply
+  public enableSupply(): void {}
+  // 启用repay
+  public enableRepay(): void {}
+  // supply
+  public supply(): void {}
 }

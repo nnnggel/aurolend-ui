@@ -13,6 +13,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ClaimBalanceDialogComponent } from '../../dialogs/claim-balance-dialog/claim-balance-dialog.component';
 import { MarketsComponent } from '../../components/markets/markets.component';
 import { MatTableModule } from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MarketRowDialogModule } from '../../dialogs/market-row-dialog/market-row-dialog.module';
 
 @NgModule({
   imports: [
@@ -25,6 +28,9 @@ import { MatTableModule } from '@angular/material/table';
     MatProgressBarModule,
     MatDialogModule,
     MatTableModule,
+    FormsModule,
+    MatInputModule,
+    MarketRowDialogModule,
   ],
   declarations: [
     HomeComponent,

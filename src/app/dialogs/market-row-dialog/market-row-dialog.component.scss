@@ -1,0 +1,91 @@
+@import "~src/common";
+
+::ng-deep {
+  .mat-dialog-container {
+    padding: 0;
+  }
+}
+
+.market-row-dialog {
+  position: relative;
+  width: 380px;
+
+  .token-icon {
+    width: 27px;
+    height: 27px;
+    margin-right: 7.5px;
+  }
+
+  .mat-dialog-title {
+    position: relative;
+    display: flex;
+    height: 60px;
+    margin-bottom: 0;
+    color: #141e27;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    .close-icon {
+      position: absolute;
+      top: 22px;
+      right: 20px;
+    }
+  }
+
+  .mat-dialog-content {
+    max-height: calc(98vh - 61px);
+    margin: 0;
+    padding: 0;
+
+    .supply {
+      &-limit {
+        cursor: auto;
+
+        &:hover {
+          color: #657786;
+        }
+      }
+    }
+
+    button {
+      width: calc(100% - 52px);
+      height: 52px;
+      margin: 20px 26px 0;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      background: $theme;
+
+      &.mat-button-disabled {
+        background: #ccd6dd;
+      }
+    }
+
+    .loading-box {
+      flex-direction: column;
+      text-align: center;
+
+      .loading {
+        width: 88px;
+        height: 88px;
+        margin: 52px 0 0;
+      }
+
+      .claim-balance {
+        &-tip {
+          margin-top: 18px;
+          margin-bottom: 105px;
+          color: #aab8c1;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  ::ng-deep .cdk-program-focused .mat-button-focus-overlay {
+    opacity: 0;
+  }
+}

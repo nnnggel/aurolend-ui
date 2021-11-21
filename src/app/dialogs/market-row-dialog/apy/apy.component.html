@@ -1,0 +1,52 @@
+<div class="apy-details">
+  <a
+    class="apy-rate"
+    href="https://compound.finance/markets/BAT"
+    target="_blank"
+  >
+    <span *ngIf="tabIndex === 0 || tabIndex === 1">{{
+      "marketRowDialog.supplyRate" | translate
+    }}</span>
+    <span *ngIf="tabIndex === 2 || tabIndex === 3">{{
+      "marketRowDialog.borrowRate" | translate
+    }}</span>
+    <i class="icon link-icon"></i>
+  </a>
+  <!--supply apy-->
+  <div class="apy-details-row flex-between">
+    <span class="apy-details-row-name flex-center">
+      <span
+        class="token-icon icon"
+        [style.backgroundImage]="
+          'url(assets/images/' + toLowerCase(data.token) + '.svg)'
+        "
+      >
+      </span>
+      <span *ngIf="tabIndex === 0 || tabIndex === 1">{{
+        "marketRowDialog.supplyAPY" | translate
+      }}</span>
+      <span *ngIf="tabIndex === 2 || tabIndex === 3">{{
+        "marketRowDialog.borrowAPY" | translate
+      }}</span>
+    </span>
+    <span class="apy-details-row-num"
+      ><span *ngIf="tabIndex === 0 || tabIndex === 1">{{
+        data.supplyAPY
+      }}</span>
+      <span *ngIf="tabIndex === 2 || tabIndex === 3">{{
+        data.borrowAPY
+      }}</span></span
+    >
+  </div>
+  <!--distribution apy-->
+  <div class="apy-details-row flex-between">
+    <span class="apy-details-row-name flex-center"
+      ><span
+        class="token-icon icon"
+        [style.backgroundImage]="'url(assets/images/comp.svg)'"
+      ></span>
+      {{ "marketRowDialog.distribution" | translate }}</span
+    >
+    <span class="apy-details-row-num">{{ data.supplyDistributionAPY }}</span>
+  </div>
+</div>

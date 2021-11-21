@@ -1,0 +1,18 @@
+.enable {
+  flex-direction: column;
+  margin: 52px 26px;
+
+  &-icon {
+    width: 71px;
+    height: 71px;
+    margin-bottom: 18px;
+  }
+
+  &-tip {
+    margin-bottom: 0;
+    color: #aab8c1;
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+  }
+}

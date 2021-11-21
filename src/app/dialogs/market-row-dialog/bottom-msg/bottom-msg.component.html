@@ -1,0 +1,20 @@
+<div class="wallet">
+  <div class="flex-between" *ngIf="tabIndex === 0 || tabIndex === 3">
+    <span class="wallet-name">
+      {{ "marketRowDialog.walletBalance" | translate }}</span
+    >
+    <span class="wallet-num">{{ data.wallet }} {{ data.token }}</span>
+  </div>
+  <div class="flex-between" *ngIf="tabIndex === 1">
+    <span class="wallet-name">
+      {{ "marketRowDialog.currentlySupplying" | translate }}</span
+    >
+    <span class="wallet-num">{{ data.supplyBalance }} {{ data.token }}</span>
+  </div>
+  <div class="flex-between" *ngIf="tabIndex === 2">
+    <span class="wallet-name">
+      {{ "marketRowDialog.currentlyBorrowing" | translate }}</span
+    >
+    <span class="wallet-num">{{ data.borrowBalance }} {{ data.token }}</span>
+  </div>
+</div>

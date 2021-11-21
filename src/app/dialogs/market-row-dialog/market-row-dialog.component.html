@@ -1,0 +1,197 @@
+<div class="market-row-dialog">
+  <h2 mat-dialog-title class="flex-center">
+    <span *ngIf="!loading" class="flex-center">
+      <i
+        class="icon token-icon"
+        [style.backgroundImage]="
+          'url(assets/images/' + toLowerCase(data.token) + '.svg)'
+        "
+      ></i>
+      {{ data.name }}</span
+    >
+    <span *ngIf="loading">{{ "marketRowDialog.confirm" | translate }}</span>
+    <i class="close-icon" mat-dialog-close></i>
+  </h2>
+
+  <mat-dialog-content>
+    <div *ngIf="!loading">
+      <!--supply-->
+      <div class="supply" *ngIf="tabIndex === 0">
+        <!--enable提示-->
+        <enable-tip *ngIf="!data.isSupplyEnabled" [data]="data"></enable-tip>
+        <!--输入数量-->
+        <input-amount
+          *ngIf="data.isSupplyEnabled"
+          [data]="data"
+          [tabIndex]="tabIndex"
+          [(amount)]="amount"
+        ></input-amount>
+        <!--tabs-->
+        <tabs [tabs]="tabs" [(tabIndex)]="tabIndex"></tabs>
+        <!--APY-->
+        <apy [data]="data" [tabIndex]="tabIndex"></apy>
+        <!--Borrow Limit-->
+        <borrow-limit
+          *ngIf="data.isSupplyEnabled"
+          [amount]="amount"
+        ></borrow-limit>
+        <!--enable btn-->
+        <button
+          mat-flat-button
+          *ngIf="!data.isSupplyEnabled"
+          [disabled]="!web3.userAccount"
+          (click)="enable()"
+        >
+          {{ "marketRowDialog.enable" | translate }}
+        </button>
+        <!--supply btn-->
+        <button
+          mat-flat-button
+          *ngIf="data.isSupplyEnabled"
+          [disabled]="
+            !amount || !+amount || +amount <= 0 || +amount > +data.wallet
+          "
+          (click)="submit()"
+        >
+          <span *ngIf="+amount > +data.wallet">{{
+            "marketRowDialog.notEnough" | translate
+          }}</span>
+          <span
+            *ngIf="
+              !amount || !+amount || +amount <= 0 || +amount <= +data.wallet
+            "
+            >{{ "marketRowDialog.tabs.0" | translate }}</span
+          >
+        </button>
+        <!--wallet balance-->
+        <bottom-msg [data]="data" [tabIndex]="tabIndex"></bottom-msg>
+      </div>
+      <!--withdraw-->
+      <div class="withdraw" *ngIf="tabIndex === 1">
+        <!--输入数量-->
+        <input-amount
+          [data]="data"
+          [tabIndex]="tabIndex"
+          [(amount)]="amount"
+        ></input-amount>
+        <!--tabs-->
+        <tabs [tabs]="tabs" [(tabIndex)]="tabIndex"></tabs>
+        <!--APY-->
+        <apy [data]="data" [tabIndex]="tabIndex"></apy>
+        <!--Borrow Limit-->
+        <borrow-limit [amount]="amount"></borrow-limit>
+        <!--withdraw btn-->
+        <button
+          mat-flat-button
+          [disabled]="
+            !amount || !+amount || +amount <= 0 || +amount > +data.supplyBalance
+          "
+          (click)="submit()"
+        >
+          <span *ngIf="+amount > +data.supplyBalance">{{
+            "marketRowDialog.insufficient" | translate
+          }}</span>
+          <span *ngIf="!amount || !+amount || +amount <= +data.supplyBalance">{{
+            "marketRowDialog.tabs.1" | translate
+          }}</span>
+        </button>
+        <!--currently supplying-->
+        <bottom-msg [data]="data" [tabIndex]="tabIndex"></bottom-msg>
+      </div>
+      <!--borrow-->
+      <div class="borrow" *ngIf="tabIndex === 2">
+        <!--输入数量-->
+        <input-amount
+          [data]="data"
+          [tabIndex]="tabIndex"
+          [(amount)]="amount"
+        ></input-amount>
+        <!--tabs-->
+        <tabs [tabs]="tabs" [(tabIndex)]="tabIndex"></tabs>
+        <!--APY-->
+        <apy [data]="data" [tabIndex]="tabIndex"></apy>
+        <!--Borrow Limit-->
+        <borrow-limit [amount]="amount"></borrow-limit>
+        <!--borrow btn-->
+        <!--        todo 这里的条件判断需要修改-->
+        <button
+          mat-flat-button
+          [disabled]="
+            !amount || !+amount || +amount <= 0 || +amount > +data.supplyBalance
+          "
+          (click)="submit()"
+        >
+          <span *ngIf="+amount > +data.supplyBalance">{{
+            "marketRowDialog.insufficient" | translate
+          }}</span>
+          <span *ngIf="!amount || !+amount || +amount <= +data.supplyBalance">{{
+            "marketRowDialog.tabs.2" | translate
+          }}</span>
+        </button>
+        <!--currently borrowing-->
+        <bottom-msg [data]="data" [tabIndex]="tabIndex"></bottom-msg>
+      </div>
+      <!--repay-->
+      <div class="repay" *ngIf="tabIndex === 3">
+        <!--enable提示-->
+        <enable-tip *ngIf="!data.isRepayEnabled" [data]="data"></enable-tip>
+        <!--输入数量-->
+        <input-amount
+          *ngIf="data.isRepayEnabled"
+          [data]="data"
+          [tabIndex]="tabIndex"
+          [(amount)]="amount"
+        ></input-amount>
+        <!--tabs-->
+        <tabs [tabs]="tabs" [(tabIndex)]="tabIndex"></tabs>
+        <!--APY-->
+        <apy [data]="data" [tabIndex]="tabIndex"></apy>
+        <!--Borrow Limit-->
+        <borrow-limit
+          *ngIf="data.isRepayEnabled"
+          [amount]="amount"
+        ></borrow-limit>
+        <!--enable btn-->
+        <button
+          mat-flat-button
+          *ngIf="!data.isRepayEnabled"
+          [disabled]="!web3.userAccount"
+          (click)="enable()"
+        >
+          {{ "marketRowDialog.enable" | translate }}
+        </button>
+        <!--repay btn-->
+        <button
+          mat-flat-button
+          *ngIf="data.isRepayEnabled"
+          [disabled]="
+            !amount || !+amount || +amount <= 0 || +amount > +data.wallet
+          "
+          (click)="submit()"
+        >
+          <span *ngIf="+amount > +data.wallet">{{
+            "marketRowDialog.notEnough" | translate
+          }}</span>
+          <span
+            *ngIf="
+              !amount || !+amount || +amount <= 0 || +amount <= +data.wallet
+            "
+            >{{ "marketRowDialog.tabs.3" | translate }}</span
+          >
+        </button>
+        <!--wallet balance-->
+        <bottom-msg [data]="data" [tabIndex]="tabIndex"></bottom-msg>
+      </div>
+    </div>
+
+    <!--loading-->
+    <div class="loading-box flex-center" *ngIf="loading">
+      <div class="loading">
+        <div></div>
+      </div>
+      <p class="claim-balance-tip">
+        {{ "claimBalance.confirmTip" | translate }}
+      </p>
+    </div>
+  </mat-dialog-content>
+</div>

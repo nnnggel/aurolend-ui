@@ -1,0 +1,13 @@
+<div class="input-amount flex-center">
+  <input
+    matInput
+    type="text"
+    placeholder="0  "
+    autocomplete="off"
+    [(ngModel)]="amountInput"
+    (input)="emitAmount()"
+  />
+  <span class="input-amount-max" (click)="amountMax()">{{
+    "marketRowDialog.max" | translate
+  }}</span>
+</div>

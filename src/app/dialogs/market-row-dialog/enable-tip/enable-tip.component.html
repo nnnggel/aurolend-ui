@@ -1,0 +1,11 @@
+<div class="enable flex-center">
+  <i
+    class="enable-icon icon"
+    [style.backgroundImage]="
+      'url(assets/images/' + toLowerCase(data.token) + '_progress.svg)'
+    "
+  ></i>
+  <p class="enable-tip">
+    {{ "marketRowDialog.toEnable" | translate: { value: data.name } }}
+  </p>
+</div>

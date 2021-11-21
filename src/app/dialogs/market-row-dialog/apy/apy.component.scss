@@ -1,0 +1,59 @@
+@import "~src/common";
+
+.token-icon {
+  width: 27px;
+  height: 27px;
+  margin-right: 7.5px;
+}
+
+.apy {
+  &-details {
+    padding: 24px 26px 0;
+
+    &-row {
+      padding: 15px 0;
+      border-bottom: 1px solid #eceff1;
+
+      &:nth-last-of-type(1) {
+        border-bottom: unset;
+      }
+
+      &-name {
+        color: #aab8c1;
+        font-size: 15px;
+      }
+
+      &-num {
+        color: #141e27;
+        font-size: 15px;
+      }
+    }
+  }
+
+  &-rate {
+    display: inline-flex;
+    align-items: center;
+    color: #657786;
+    font-weight: 700;
+    font-size: 12px;
+    text-decoration: none;
+    outline: unset;
+
+    .link-icon {
+      width: 12px;
+      height: 12px;
+      margin-left: 7.5px;
+      background-image: url("~src/assets/images/link.svg");
+      background-size: 100%;
+      border-radius: 0;
+    }
+
+    &:hover {
+      color: $theme;
+
+      .link-icon {
+        background-image: url("~src/assets/images/link_active.svg");
+      }
+    }
+  }
+}

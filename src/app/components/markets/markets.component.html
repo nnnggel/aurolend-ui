@@ -18,6 +18,15 @@
         </div>
       </td>
     </ng-container>
+    <!--total supply-->
+    <ng-container matColumnDef="totalSupply">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "markets.totalSupply" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.totalSupply | number: "0.0-0" }} {{ element.token }}
+      </td>
+    </ng-container>
     <!--supplyAPY-->
     <ng-container matColumnDef="supplyAPY">
       <th mat-header-cell *matHeaderCellDef>
@@ -25,6 +34,15 @@
       </th>
       <td mat-cell *matCellDef="let element">
         {{ element.supplyAPY }}
+      </td>
+    </ng-container>
+    <!--total borrow-->
+    <ng-container matColumnDef="totalBorrow">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "markets.totalBorrow" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.totalBorrow | number: "0.0-0" }} {{ element.token }}
       </td>
     </ng-container>
     <!--borrowAPY-->
@@ -42,7 +60,7 @@
         {{ "markets.wallet" | translate }}
       </th>
       <td mat-cell *matCellDef="let element">
-        {{ element.wallet }}
+        {{ element.wallet }} {{ element.token }}
       </td>
     </ng-container>
     <!--liquidity-->
@@ -55,6 +73,10 @@
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="transaction(row)"
+    ></tr>
   </table>
 </div>

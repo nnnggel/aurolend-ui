@@ -1,0 +1,34 @@
+.wallet {
+  padding: 10px 26px 30px;
+
+  &-name {
+    color: #aab8c1;
+    font-size: 15px;
+  }
+
+  &-num {
+    color: #141e27;
+    font-size: 15px;
+  }
+}
+
+::ng-deep .mat-progress-bar {
+  width: 100%;
+  height: 3px;
+
+  &-buffer {
+    background: rgb(233 234 235);
+  }
+
+  &.orange {
+    .mat-progress-bar-fill::after {
+      background: #ffd24a;
+    }
+  }
+
+  &.red {
+    .mat-progress-bar-fill::after {
+      background: #f35454;
+    }
+  }
+}

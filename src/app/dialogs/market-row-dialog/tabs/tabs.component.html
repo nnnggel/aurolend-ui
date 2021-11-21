@@ -1,0 +1,10 @@
+<div class="tabs-box flex-between">
+  <div
+    class="tab"
+    *ngFor="let item of tabs"
+    (click)="selectTab(item)"
+    [class.active]="item === tabIndex"
+  >
+    {{ "marketRowDialog.tabs." + item | translate }}
+  </div>
+</div>

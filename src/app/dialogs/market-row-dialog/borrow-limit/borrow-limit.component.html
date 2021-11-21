@@ -1,0 +1,42 @@
+<div class="borrow-limit apy-details">
+  <span class="apy-rate apy-limit">
+    {{ "marketRowDialog.borrowLimit" | translate }}
+  </span>
+  <!--borrow limit-->
+  <div class="apy-details-row flex-between">
+    <span class="apy-details-row-name">{{
+      "marketRowDialog.borrowLimit" | translate
+    }}</span>
+    <!--数量1 箭头 数量2-->
+    <span class="apy-details-row-num flex-between"
+      >${{ web3.borrowLimit }}
+      <span *ngIf="+amount && +amount > 0">
+        <i class="icon arrow-icon"></i>
+        $123.24
+      </span>
+    </span>
+  </div>
+  <!--borrow limit used-->
+  <div class="apy-details-row flex-between">
+    <span class="apy-details-row-name">{{
+      "marketRowDialog.borrowLimitUsed" | translate
+    }}</span>
+    <span class="apy-details-row-num flex-between"
+      >{{ web3.borrowLimitPercent | number: "0.0-2" }}%
+      <span *ngIf="+amount && +amount > 0">
+        <i class="icon arrow-icon"></i>
+        14%
+      </span>
+    </span>
+  </div>
+  <mat-progress-bar
+    mode="determinate"
+    [value]="web3.borrowLimitPercent"
+    [class.orange]="
+      web3.borrowLimitPercent >= 60 && web3.borrowLimitPercent < 80
+    "
+    [class.red]="web3.borrowLimitPercent >= 80"
+  >
+    ></mat-progress-bar
+  >
+</div>
